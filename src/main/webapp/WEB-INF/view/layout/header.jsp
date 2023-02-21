@@ -22,7 +22,7 @@
                     </c:when>
 
                     <c:otherwise>
-                        <div class="padding"><a href="/updateForm">회원정보</a></div>
+
 
                         <div class="padding"><a href="/logout">로그아웃</a></div>
                     </c:otherwise>

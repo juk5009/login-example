@@ -6,7 +6,7 @@
             <body>
                 <div class="box">
                     <div class="header">
-                        <h1>로그인페이지</h1>
+                        <h1>Main page</h1>
 
                     </div>
                     <hr />
