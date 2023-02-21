@@ -34,6 +34,7 @@ public class UserService {
     }
 
     public User 로그인(LoginReqDto loginReqDto) {
+
         String password = loginReqDto.getPassword();
         String enpassword = PasswordUtil.encodePassword(password);
         User principal = userRepository.findByUsernameAndPassword(loginReqDto.getUsername(), enpassword);

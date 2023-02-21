@@ -57,10 +57,7 @@ public class UserContoller {
 
     @GetMapping("/user/main")
     public String main(Model model) {
-        User principal = (User) session.getAttribute("principal");
-        if (principal == null) {
-            throw new CustomException("잘못된 요청입니다.", HttpStatus.BAD_REQUEST);
-        }
+
         return "user/main";
     }
 
