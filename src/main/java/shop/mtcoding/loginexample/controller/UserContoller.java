@@ -16,4 +16,9 @@ public class UserContoller {
         return "user/loginForm";
     }
 
+    @GetMapping("/main")
+    public String main() {
+        return "user/main";
+    }
+
 }

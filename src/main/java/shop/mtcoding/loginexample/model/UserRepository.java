@@ -16,6 +16,5 @@ public interface UserRepository {
 
     public int deleteById(int id);
 
-    // public int insert(String username, String password, String email);
     public User findByUsernameAndPassword(User user);
 }
