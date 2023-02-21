@@ -90,7 +90,7 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE));
 
         // then
-        assertThat(principal.getUsername()).isEqualTo("ssar");
+        assertThat(principal.getUsername()).isEqualTo("cos");
         assertThat(principal.getPassword()).isEqualTo("1234");
         assertThat(principal.getEmail()).isEqualTo("ssar@nate.com");
         resultActions.andExpect(status().is3xxRedirection());
