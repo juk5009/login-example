@@ -13,7 +13,6 @@ import shop.mtcoding.loginexample.dto.UserReq.JoinReqDto;
 import shop.mtcoding.loginexample.dto.UserReq.LoginReqDto;
 import shop.mtcoding.loginexample.handler.ex.CustomException;
 import shop.mtcoding.loginexample.model.User;
-import shop.mtcoding.loginexample.model.UserRepository;
 import shop.mtcoding.loginexample.service.UserService;
 
 @Controller
@@ -24,9 +23,6 @@ public class UserContoller {
 
     @Autowired
     HttpSession session;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @PostMapping("/join")
     public String join(JoinReqDto joinReqDto) {
