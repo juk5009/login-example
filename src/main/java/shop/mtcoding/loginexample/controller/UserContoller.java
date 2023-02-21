@@ -3,7 +3,9 @@ package shop.mtcoding.loginexample.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -11,6 +13,7 @@ import shop.mtcoding.loginexample.dto.UserReq.JoinReqDto;
 import shop.mtcoding.loginexample.dto.UserReq.LoginReqDto;
 import shop.mtcoding.loginexample.handler.ex.CustomException;
 import shop.mtcoding.loginexample.model.User;
+import shop.mtcoding.loginexample.model.UserRepository;
 import shop.mtcoding.loginexample.service.UserService;
 
 @Controller
@@ -21,6 +24,9 @@ public class UserContoller {
 
     @Autowired
     HttpSession session;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/join")
     public String join(JoinReqDto joinReqDto) {
@@ -50,7 +56,16 @@ public class UserContoller {
         }
         User principal = userService.로그인(loginReqDto);
         session.setAttribute("principal", principal);
-        return "redirect:/main";
+        return "redirect:/user/main";
+    }
+
+    @GetMapping("/user/main")
+    public String main(Model model) {
+        User principal = (User) session.getAttribute("principal");
+        if (principal == null) {
+            throw new CustomException("잘못된 요청입니다.", HttpStatus.BAD_REQUEST);
+        }
+        return "user/main";
     }
 
     @GetMapping("/joinForm")
@@ -61,11 +76,6 @@ public class UserContoller {
     @GetMapping({ "/", "/loginForm" })
     public String loginForm() {
         return "user/loginForm";
-    }
-
-    @GetMapping("/main")
-    public String main() {
-        return "user/main";
     }
 
     @GetMapping("/logout")
